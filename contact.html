@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="images/Logo.png" type="image/x-icon"  >
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Contact Samdani | Let’s Collaborate</title>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "f0vksnaASPOGmW3vu",
+            });
+        })();
+    </script>
+
+    <style>
+        /* ========================================================================= */
+        /* BASE STYLES */
+        /* ========================================================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background: #e6e6e6;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            margin: 310px auto 0;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .background-circle {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(90, 115, 255, 0.35), transparent 70%);
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 900;
+            color: black;
+            margin: 0;
+            z-index: 1;
+            position: relative;
+        }
+
+        nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            z-index: 1;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 2px;
+            background: black;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            transform: scaleX(1);
+        }
+
+        h2 {
+            font-size: 25px;
+            font-weight: 700;
+            color: rgb(71, 71, 71);
+            margin: 0 auto 50px auto;
+            z-index: 1;
+            position: relative;
+        }
+
+        .spacer {
+            height: 100px;
+        }
+
+        /* ========================================================================= */
+        /* CONTACT CONTENT WRAPPER */
+        /* ========================================================================= */
+
+        .contact-content-wrapper {
+            max-width: 1100px;
+            margin: 80px auto 50px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* ========================================================================= */
+        /* TESTIMONIALS SECTION */
+        /* ========================================================================= */
+
+        .testimonials-section {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .testimonials-scroll-container {
+            overflow-x: hidden;
+            padding: 20px 0;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .testimonial-scroller {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .testimonial-scroller:hover {
+            animation-play-state: paused;
+        }
+
+        .testimonial-card {
+            flex: 0 0 320px;
+            scroll-snap-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            border-top: 5px solid #7185f7;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+            margin-right: 25px;
+            white-space: normal;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .client-info strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .client-info span {
+            font-size: 13px;
+            color: #555;
+            display: block;
+        }
+
+        /* ========================================================================= */
+        /* CONTACT FORM SECTION - FULLY RESPONSIVE */
+        /* ========================================================================= */
+
+        .contact-form-section {
+            display: flex;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .left-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .left-info h2 {
+            text-align: left;
+            margin: 0 0 15px 0;
+            font-size: 35px;
+            color: #6f81e8;
+            font-weight: 700;
+        }
+
+        .left-info p {
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-wrapper {
+            flex: 1;
+            padding: 30px;
+            background: rgb(238, 238, 238);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #525252;
+            width: 100%;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #525252;
+            font-size: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b0b0b0;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            background: transparent;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #5a73ff;
+            outline: none;
+            border: 1px solid #5a73ff;
+            background: transparent;
+        }
+
+        .submit-button {
+            padding: 12px 30px;
+            background-color: #6076f3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: rgb(0, 0, 0);
+            transform: translateY(-1px);
+        }
+
+        /* ========================================================================= */
+        /* FOOTER STYLES */
+        /* ========================================================================= */
+
+        footer {
+            background: #f1f1f1;
+            padding: 40px 80px;
+            font-size: 14px;
+            color: #333;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: #333;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #5a73ff;
+        }
+
+        .footer-col img {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .footer-col p {
+            margin: 5px 0;
+            line-height: 1.8;
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+       
+
+        /* ========================================================================= */
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
+        /* ========================================================================= */
+
+        /* Tablets and Below (992px) */
+        @media (max-width: 992px) {
+            .container {
+                margin: 180px auto 0;
+            }
+
+            h1 {
+                font-size: 60px;
+            }
+
+            .background-circle {
+                width: 400px;
+                height: 400px;
+            }
+
+            .contact-content-wrapper {
+                margin: 60px auto 40px auto;
+                padding: 0 30px;
+            }
+
+            /* FORM RESPONSIVE - TABLET */
+            .contact-form-section {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .left-info {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .left-info h2 {
+                text-align: center;
+                font-size: 32px;
+            }
+
+            .left-info p {
+                text-align: center;
+            }
+
+            .form-wrapper {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            footer {
+                padding: 30px 40px;
+            }
+        }
+
+        /* Mobile Landscape (768px) */
+        @media (max-width: 768px) {
+            .container {
+                margin: 120px auto 0;
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 45px;
+            }
+
+            nav {
+                gap: 20px;
+                margin-top: 20px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .background-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .contact-content-wrapper {
+                margin: 50px auto 30px auto;
+                padding: 0 20px;
+            }
+
+            .testimonials-section {
+                margin-bottom: 50px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 75vw;
+                padding: 25px;
+                margin-right: 20px;
+            }
+
+            /* FORM RESPONSIVE - MOBILE LANDSCAPE */
+            .left-info h2 {
+                font-size: 28px;
+            }
+
+            .left-info p {
+                font-size: 15px;
+            }
+
+            .form-wrapper {
+                padding: 25px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 15px;
+                padding: 11px;
+            }
+
+            .spacer {
+                height: 60px;
+            }
+
+            footer {
+                padding: 25px 30px;
+            }
+        }
+
+        /* Mobile Portrait (576px) */
+        @media (max-width: 576px) {
+            .container {
+                margin: 100px auto 0;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .background-circle {
+                width: 250px;
+                height: 250px;
+                left: 70%;
+            }
+
+            .contact-content-wrapper {
+                padding: 0 15px;
+                margin: 40px auto 20px auto;
+            }
+
+            .testimonials-section {
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 85vw;
+                padding: 20px;
+                margin-right: 15px;
+            }
+
+            .stars {
+                font-size: 16px;
+            }
+
+            .quote {
+                font-size: 14px;
+            }
+
+            /* FORM FULLY RESPONSIVE - MOBILE */
+            .contact-form-section {
+                gap: 30px;
+            }
+
+            .left-info h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .left-info p {
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+            .form-wrapper {
+                padding: 20px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .contact-form label {
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .contact-form textarea {
+                min-height: 100px;
+            }
+
+            .submit-button {
+                padding: 12px 20px;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+
+            .spacer {
+                height: 40px;
+            }
+
+            footer {
+                padding: 20px 15px;
+            }
+
+            .footer-container {
+                gap: 20px;
+                flex-direction: column;
+            }
+
+            .footer-col {
+                min-width: 100%;
+            }
+
+            .footer-col h3 {
+                font-size: 15px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* Extra Small Phones (400px) */
+        @media (max-width: 400px) {
+            .container {
+                margin: 80px auto 0;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .background-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-content-wrapper {
+                padding: 0 10px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 90vw;
+                padding: 15px;
+            }
+
+            .left-info h2 {
+                font-size: 22px;
+            }
+
+            .left-info p {
+                font-size: 13px;
+            }
+
+            .form-wrapper {
+                padding: 15px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 9px;
+                font-size: 13px;
+            }
+
+            .submit-button {
+                padding: 11px 18px;
+                font-size: 13px;
+            }
+        }
+
+        /* Ultra Small Phones (350px) */
+        @media (max-width: 350px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .left-info h2 {
+                font-size: 20px;
+            }
+
+            .form-wrapper {
+                padding: 12px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-circle"></div>
+        <h1>CONTACT ME</h1>
+
+        <nav>
+           <a href="index.html">Home</a>
+            <a href="aboutme.html">About Me</a>
+            <a href="skill.html">Skills</a>
+            <a href="project.html">Project</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="contact-content-wrapper">
+
+        <div class="testimonials-section">
+            <h2>CLIENT TESTIMONIALS</h2>
+
+            <div class="testimonials-scroll-container">
+                <div class="testimonial-scroller">
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">" M Ahmad delivered exceptional UI/UX design. Her prototypes were clean,
+                                intuitive, and the project was completed ahead of schedule. Highly recommended!"</p>
+                        </div>
+                        <div class="client-info"><strong>Saifullah</strong><span>Freelancer</span></div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★☆</div>
+                            <p class="quote">"The graphic design work was creative and perfectly aligned with our
+                                vision. A true professional who is easy to work with."</p>
+                        </div>
+                        <div class="client-info"><strong>Uroobah Ovais</strong><span>Freelancer</span></div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Excellent technical skills in front-end development (HTML/CSS/Tailwind).
+                                He delivered a pixel-perfect, responsive site."</p>
+                        </div>
+                        <div class="client-info"><strong>Karimullah</strong><span>Lead Developer, Prime Paass</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Great communication and fast results. The project outcome exceeded my
+                                expectations."</p>
+                        </div>
+                        <div class="client-info"><strong>Asad Manzoor</strong><span>Freelance Client</span></div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"M Ahmad delivered exceptional UI/UX design. Her prototypes were clean,
+                                intuitive, and the project was completed ahead of schedule. Highly recommended!"</p>
+                        </div>
+                        <div class="client-info"><strong>Saifullah</strong><span>Freelancer</span></div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★☆</div>
+                            <p class="quote">"The graphic design work was creative and perfectly aligned with our
+                                vision. A true professional who is easy to work with."</p>
+                        </div>
+                        <div class="client-info"><strong>Uroobah Ovais</strong><span>Freelancer</span></div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Excellent technical skills in front-end development (HTML/CSS/Bootstrap).
+                                He delivered a pixel-perfect, responsive site."</p>
+                        </div>
+                        <div class="client-info"><strong>Karimullah</strong><span>Lead Developer, Prime Pass</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Great communication and fast results. The project outcome exceeded my
+                                expectations."</p>
+                        </div>
+                        <div class="client-info"><strong>Asad Manzoor</strong><span>Freelance Client</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-section">
+
+            <div class="left-info">
+                <h2>GET IN TOUCH</h2>
+                <p>I am currently available for new projects and exciting opportunities. Whether you have a challenging
+                    idea, a potential collaboration, or just want to say hello, feel free to drop me a message using the
+                    form!</p>
+                <p>I aim to respond to all inquiries within 24 hours.</p>
+
+                <div class="footer-buttons" width="200px">
+                    <a href="cv/ahmad.pdf" class="footer-btn download-btn" style="width: 180px;"  download>Download CV</a>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="contactForm" class="contact-form">
+
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="Subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="Message" rows="5" required ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <footer>
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>Contact Me</h3>
+      <p><img src="images/email.png" width="20" alt="Email Icon">
+        muhammadsamdani11@gmail.com
+      </p>
+      <p><img src="images/address.png" width="20" alt="Address Icon">
+        House #684, Block 3, Sector D2, Township, Lahore
+      </p>
+      <p><img src="images/contact.png" width="20" alt="Contact Icon">
+        +92 314 468 8105
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Information</h3>
+      <a href="aboutme.html">About Me </a>
+      <a href="skill.html">Skills</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="skill.html">My Skills</a>
+      <a href="project.html">My Projects</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Follow Me</h3>
+      <div class="icons">
+        <a href="https://www.facebook.com/share/17DKLPuBj3/">
+          <img src="images/facebook.png" alt="Facebook" width="25">
+        </a>
+        <a href="https://www.instagram.com/itz.mas_">
+          <img src="images/instagram.png" alt="Instagram" width="25">
+        </a>
+        <a href="https://github.com/MuhammadAhmadSamdani">
+          <img src="images/github.png" alt="GitHub" width="25">
+        </a>
+        <a href="https://www.linkedin.com/in/muhammadahmadsamdani">
+          <img src="images/linkedin.png" alt="LinkedIn" width="25">
+        </a>
+      </div>
+
+      <!-- New Buttons Added Here -->
+      <div class="footer-buttons" style="color: white;">
+        <a href="contact.html" class="footer-btn contact-btn " style="color: white; width: 130px; height: 40px;">Contact Us</a>
+        <a href="cv/ahmad.pdf" class="footer-btn download-btn" style="color: white; width: 130px; height: 40px;" download>Download CV</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Muhammad Ahmad Samdani. All rights reserved.</p>
+  </div>
+</footer>
+
+
+    <script src="js/contact.js"></script>
+</body>
+
+</html>

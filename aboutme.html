@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="images/Logo.png" type="image/x-icon"  >
+    <title>About Samdani | Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* ========================================================================= */
+        /* BASE STYLES */
+        /* ========================================================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    z-index: 1;
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+}
+
+/* Navigation Hover Effect (underline) */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: black;
+    transform: scaleX(0); 
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+}
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background: #e6e6e6;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            margin: 310px auto 0;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .background-circle {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(90, 115, 255, 0.35), transparent 70%);
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 900;
+            color: black;
+            margin: 0;
+            z-index: 1;
+            position: relative;
+        }
+
+
+
+        .spacer {
+            height: 100px;
+        }
+
+        /* ========================================================================= */
+        /* ABOUT ME SECTION */
+        /* ========================================================================= */
+
+        .about {
+            position: relative;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 45px auto 0;
+        }
+
+        .about::before,
+        .about::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(90, 115, 255, 0.3), transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .about::before {
+            top: -50px;
+            left: -80px;
+        }
+
+        .about::after {
+            bottom: -50px;
+            right: -80px;
+        }
+
+        .about p {
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #000000;
+            margin: 0 auto 50px auto;
+            text-align: justify;
+            max-width: 800px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 0;
+            width: 80%;
+            max-width: 700px;
+            margin: 0 auto 80px auto;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .stat-number {
+            font-size: 50px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 5px;
+            color: #6579eb;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .stat-separator {
+            width: 1px;
+            height: 60px;
+            background-color: #333;
+        }
+
+        /* ========================================================================= */
+        /* EDUCATION/CERTIFICATIONS SECTION */
+        /* ========================================================================= */
+
+        .education-section-combined {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .education-section-combined h2 {
+            text-align: left;
+            font-size: 30px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .education-column,
+        .certification-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .education-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background: #dadada;
+            color: #000000;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: #333;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon-box {
+            flex-shrink: 0;
+            width: 80px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .icon-box img {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .year-badge {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            padding: 4px 8px;
+            border: 1px solid #5a73ff;
+            color: #5a73ff;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .details {
+            flex-grow: 1;
+        }
+
+        .details .title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: #000000;
+        }
+
+        .details .institution {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0 0 10px 0;
+            color: #4b4b4b;
+        }
+
+        .details .description {
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.6;
+            color: #4b4b4b;
+        }
+
+        /* ========================================================================= */
+        /* FOOTER STYLES */
+        /* ========================================================================= */
+        
+        footer {
+            background: #f1f1f1;
+            padding: 40px 80px;
+            font-size: 14px;
+            color: #333;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: #333;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #5a73ff;
+        }
+
+        .footer-col img {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .footer-col p {
+            margin: 5px 0;
+            line-height: 1.8;
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* ========================================================================= */
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
+        /* ========================================================================= */
+        
+        /* Tablets (1024px and below) */
+        @media (max-width: 1024px) {
+            .education-section-combined {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .education-column,
+            .certification-column {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto 30px auto;
+            }
+            
+            .education-section-combined h2 {
+                text-align: center;
+            }
+        }
+
+        /* Medium Tablets (992px) */
+        @media (max-width: 992px) {
+            .container {
+                margin: 180px auto 0;
+            }
+
+            h1 {
+                font-size: 60px;
+            }
+
+            .background-circle {
+                width: 400px;
+                height: 400px;
+            }
+
+            .about {
+                padding: 50px 30px;
+            }
+
+            .about p {
+                font-size: 17px;
+            }
+
+            .stats-section {
+                width: 90%;
+            }
+
+            footer {
+                padding: 30px 40px;
+            }
+        }
+        
+        /* Mobile Landscape (768px) */
+        @media (max-width: 768px) {
+            .container {
+                margin: 120px auto 0;
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 45px;
+            }
+
+            .background-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .about {
+                padding: 40px 20px;
+                margin: 30px auto 0;
+            }
+
+            .about::before,
+            .about::after {
+                width: 250px;
+                height: 250px;
+            }
+
+            .about p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .stats-section {
+                width: 95%;
+                padding: 25px 0;
+            }
+
+            .stat-number {
+                font-size: 40px;
+            }
+
+            .stat-label {
+                font-size: 13px;
+            }
+
+            .stat-separator {
+                height: 50px;
+            }
+
+            .education-section-combined {
+                margin: 30px auto;
+                padding: 0 20px;
+            }
+
+            .education-section-combined h2 {
+                font-size: 26px;
+            }
+
+            .education-card {
+                flex-direction: column;
+                padding: 18px;
+            }
+
+            .icon-box {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .year-badge {
+                margin-top: 0;
+            }
+
+            .details .title {
+                font-size: 18px;
+            }
+
+            .details .institution {
+                font-size: 15px;
+            }
+
+            .details .description {
+                font-size: 13px;
+            }
+
+            .spacer {
+                height: 60px;
+            }
+
+            footer {
+                padding: 25px 30px;
+            }
+        }
+        
+        /* Mobile Portrait (576px) */
+        @media (max-width: 576px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .container {
+                margin: 100px auto 0;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .background-circle {
+                width: 250px;
+                height: 250px;
+                left: 70%;
+            }
+
+            .about {
+                padding: 30px 15px;
+            }
+
+            .about::before,
+            .about::after {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about p {
+                font-size: 15px;
+                text-align: left;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 25px;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .stat-separator {
+                width: 80%;
+                height: 1px;
+            }
+
+            .stat-number {
+                font-size: 45px;
+            }
+
+            .stat-label {
+                font-size: 14px;
+            }
+
+            .education-section-combined {
+                padding: 0 15px;
+            }
+
+            .education-section-combined h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .education-card {
+                padding: 15px;
+            }
+
+            .icon-box img {
+                width: 35px;
+                height: 35px;
+                padding: 8px;
+            }
+
+            .year-badge {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            .details .title {
+                font-size: 16px;
+            }
+
+            .details .institution {
+                font-size: 14px;
+            }
+
+            .details .description {
+                font-size: 12px;
+            }
+
+            .spacer {
+                height: 40px;
+            }
+
+            footer {
+                padding: 20px 15px;
+            }
+
+            .footer-container {
+                gap: 20px;
+                flex-direction: column;
+            }
+
+            .footer-col {
+                min-width: 100%;
+            }
+
+            .footer-col h3 {
+                font-size: 15px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* Extra Small Phones (400px) */
+        @media (max-width: 400px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+            .container {
+                margin: 80px auto 0;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .background-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about {
+                padding: 25px 10px;
+            }
+
+            .about p {
+                font-size: 14px;
+            }
+
+            .stat-number {
+                font-size: 38px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .education-section-combined h2 {
+                font-size: 22px;
+            }
+
+            .education-card {
+                padding: 12px;
+            }
+
+            .icon-box img {
+                width: 30px;
+                height: 30px;
+                padding: 6px;
+            }
+
+            .details .title {
+                font-size: 15px;
+            }
+
+            .details .institution {
+                font-size: 13px;
+            }
+        }
+
+        /* Ultra Small Phones (350px) */
+        @media (max-width: 350px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+
+            .about p {
+                font-size: 13px;
+            }
+
+            .stat-number {
+                font-size: 35px;
+            }
+
+            .education-section-combined h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-circle"></div>
+        <h1>ABOUT ME</h1>
+
+        <nav id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About Me</a>
+            <a href="skill.html">Skills</a>
+            <a href="project.html">Project</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <section class="about">
+        <p>
+            I'm a creative UI/UX Designer with over 3 years of experience in crafting user-friendly and visually
+            engaging designs. Currently pursuing a BS in Computer Science, I combine creativity with a clear design
+            process to deliver intuitive and impactful digital experiences. I'm passionate about detail, consistency,
+            and creating designs that truly connect with users.
+        </p>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Years of experience</span>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Projects deliver</span>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-item">
+                <span class="stat-number">99%</span>
+                <span class="stat-label">Positive review</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="education-section-combined">
+        <div class="education-column">
+            <h2>ACADEMIC BACKGROUND</h2>
+            <div class="education-list">
+                <div class="education-card">
+                    <div class="icon-box">
+                        <img src="images/education_icon.png" alt="Education Icon">
+                        <span class="year-badge">2023 - 2027</span>
+                    </div>
+                    <div class="details">
+                        <h3 class="title">BACHELOR OF SCIENCE IN COMPUTER SCIENCE</h3>
+                        <p class="institution">Lahore Garrison University</p>
+                        <p class="description">Building strong foundations in programming, software engineering, and database systems.</p>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="icon-box">
+                        <img src="images/education_icon.png" alt="Education Icon">
+                        <span class="year-badge">2020 - 2022</span>
+                    </div>
+                    <div class="details">
+                        <h3 class="title">F.SC PRE-ENGINEERING</h3>
+                        <p class="institution">Government College (GC)</p>
+                        <p class="description">Gained analytical and problem-solving skills through a rigorous science and mathematics curriculum.</p>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="icon-box">
+                        <img src="images/education_icon.png" alt="Education Icon">
+                        <span class="year-badge">2018 - 2020</span>
+                    </div>
+                    <div class="details">
+                        <h3 class="title">MATRICULATION IN COMPUTER SCIENCE</h3>
+                        <p class="institution">Ch. Rehmant School, Township Lahore</p>
+                        <p class="description">Developed early interest in computing, creativity, and logical thinking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification-column">
+            <h2>CERTIFICATIONS</h2>
+            <div class="education-list">
+                <div class="education-card">
+                    <div class="icon-box">
+                        <img src="images/certification_icon.png" alt="Certification Icon">
+                        <span class="year-badge">2022</span>
+                    </div>
+                    <div class="details">
+                        <h3 class="title">UI DESIGN WITH FIGMA</h3>
+                        <p class="institution">Udemy</p>
+                        <p class="description">Learned to design user interfaces, wireframes, and prototypes with modern design practices.</p>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="icon-box">
+                        <img src="images/certification_icon.png" alt="Certification Icon">
+                        <span class="year-badge">2023</span>
+                    </div>
+                    <div class="details">
+                        <h3 class="title">GRAPHIC DESIGNING COURSE</h3>
+                        <p class="institution">Udemy</p>
+                        <p class="description">Mastered design principles, color theory, and composition to create visually appealing brand visuals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <footer>
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>Contact Me</h3>
+      <p><img src="images/email.png" width="20" alt="Email Icon">
+        muhammadsamdani11@gmail.com
+      </p>
+      <p><img src="images/address.png" width="20" alt="Address Icon">
+        House #684, Block 3, Sector D2, Township, Lahore
+      </p>
+      <p><img src="images/contact.png" width="20" alt="Contact Icon">
+        +92 314 468 8105
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Information</h3>
+      <a href="aboutme.html">About Me </a>
+      <a href="skill.html">Skills</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="skill.html">My Skills</a>
+      <a href="project.html">My Projects</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Follow Me</h3>
+      <div class="icons">
+        <a href="https://www.facebook.com/share/17DKLPuBj3/">
+          <img src="images/facebook.png" alt="Facebook" width="25">
+        </a>
+        <a href="https://www.instagram.com/itz.mas_">
+          <img src="images/instagram.png" alt="Instagram" width="25">
+        </a>
+        <a href="https://github.com/MuhammadAhmadSamdani">
+          <img src="images/github.png" alt="GitHub" width="25">
+        </a>
+        <a href="https://www.linkedin.com/in/muhammadahmadsamdani">
+          <img src="images/linkedin.png" alt="LinkedIn" width="25">
+        </a>
+      </div>
+
+      <!-- New Buttons Added Here -->
+      <div class="footer-buttons" style="color: white;">
+        <a href="contact.html" class="footer-btn contact-btn " style="color: white; width: 130px; height: 40px;">Contact Us</a>
+        <a href="cv/ahmad.pdf" class="footer-btn download-btn" style="color: white; width: 130px; height: 40px;" download>Download CV</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Muhammad Ahmad Samdani. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+
+</html>2
